@@ -6,13 +6,10 @@ function update(){
     let arr=[]
     for(let y=0;y<localStorage.length;y++){
         let ro=localStorage.key(y);
-      
-     
         arr.push(JSON.parse(localStorage.getItem(ro)))
     }
         arr.map((curr)=>{
     console.log(curr.id)
-            let score=0
             let div=document.createElement('div')
             div.style.display="flex"
         div.style.justifyContent="space-between"
@@ -51,16 +48,30 @@ function update(){
      }
     }
             checkbox.type="checkbox"
+            if(curr.score%2!=0){
+                checkbox.checked=true
+            }
+            else{
+                checkbox.checked=false
+            }
             checkbox.onclick=()=>{
-                score++
-                if(score%2!=0){
-                    text1.style.textDecoration="line-through"
-                    text1.style.textDecorationColor="black"
-                    text1.style.textDecorationThickness="3px"
-                }
-                else{
-                    text1.style.textDecoration="none"
-                }
+
+               let y=checkbox.parentElement.parentElement
+   let l=y.firstChild
+               let text10=l.innerText
+               let b=[]
+             b.push(JSON.parse(localStorage.getItem(text10)))
+         let iteming=b[0]
+         iteming.score+=1
+         console.log(iteming)
+         localStorage.setItem(iteming.id,JSON.stringify(iteming))
+         if(iteming.score%2!=0){
+text1.style.textDecoration="line-through"
+            text1.style.textDecorationColor="black"
+         }
+         else{
+             text1.style.textDecoration="none"
+         }
             }
           text1.innerText=`${curr.description}`
           text1.style.color="white"
@@ -70,6 +81,13 @@ function update(){
           button2.style.color="white"
           button2.style.backgroundColor="yellowgreen"
           button2.style.borderRadius="10px"
+          if(curr.score%2!=0){
+            text1.style.textDecoration="line-through"
+            text1.style.textDecorationColor="black"
+          }
+          else{
+            text1.style.textDecoration="none"
+          }
             div1.append(text1)
             // div.append(checkbox)
             div2.append(checkbox)
@@ -133,15 +151,33 @@ for(let u=0;u<localStorage.length;u++){
         }
         checkbox.type="checkbox"
         checkbox.onclick=()=>{
-            score++
-            if(score%2!=0){
-                text1.style.textDecoration="line-through"
-                text1.style.textDecorationColor="black"
-                text1.style.textDecorationThickness="3px"
-            }
-            else{
-                text1.style.textDecoration="none"
-            }
+          
+            let y=checkbox.parentElement.parentElement
+            let l=y.firstChild
+                        let text10=l.innerText
+                        let b=[]
+                      b.push(JSON.parse(localStorage.getItem(text10)))
+                  let iteming=b[0]
+                  iteming.score+=1
+                  console.log(iteming)
+                  localStorage.setItem(iteming.id,JSON.stringify(iteming))
+                  if(iteming.score%2!=0){
+         text1.style.textDecoration="line-through"
+                     text1.style.textDecorationColor="black"
+                  }
+                  else{
+                      text1.style.textDecoration="none"
+                  }
+
+        }
+        if(curr.score%2!=0){
+            text1.style.textDecoration="line-through"
+            text1.style.textDecorationColor="black"
+checkbox.checked=true
+        }
+        else{
+            text1.style.textDecoration="none"
+            checkbox.checked=false
         }
       text1.innerText=`${curr.description}`
       text1.style.color="white"
@@ -175,8 +211,10 @@ for(let p=0;p<localStorage.length;p++){
 // localStorage.clear()
 let y=max+1;
 t.onclick=()=>{
+    let score=0;
     if(input.value!=""){
    let item={
+    score:score,
     id:y,
     description:`${input.value}`
    }
