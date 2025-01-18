@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+<!-- <link rel=" stylesheet" href="src/input.css"> -->
+</head>
+<style>
+body{
+    background-color: black;
+}
+    h1{
+        color: white;
+    }
+    </style>
+<body>
+   <div class="flex justify-center mt-32">
+    <div style="border: 2px solid black;">
+    <div class="ml-20" style="color: aliceblue;">TODO LIST</div>
+    <div class="mt-3">
+        <input type="text" placeholder="type here" style="width: 160px; border-radius: 8px;" id="input">
+        <button  class="ml-2" style="background-color: yellowgreen; border-radius: 20px;" id="button" >ADD TODO</button>
+    </div>
+    <br>
+    <div id="container1"></div>
+    </div>
+    </div>
+    <script src="todo.js"></script>
+</body>
+</html>
